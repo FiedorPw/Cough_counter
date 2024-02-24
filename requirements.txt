@@ -1,0 +1,4 @@
+xgboost==0.90
+scipy==0.22.1
+pyaudio
+#sudo apt-get install portaudio19-dev
