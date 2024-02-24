@@ -37,11 +37,23 @@ def delete_speach_count_coughs(chunk_files):
             print(chunk,chunk_prob,"cough")
             cough_chunks[chunk] = chunk_prob
         else:
-            print(f"no cough wywalamy plik{chunk}")
-            os.remove(chunk)
+            print(f"no cough wywalamy plik{chunk} prawdopodobienstwo: {chunk_prob}")
+
+            #usuwanie pliku
+            # os.remove(chunk)
 
 
-
+def count_coughs(file,strictness):
+    # audio = sys.argv[1:]
+    # cut wave fragments to cough and speach fragments
+    parameters = [strictness,file]
+    webrtcv_cut_wav.main(parameters)
+    chunk_files = get_chunk_files(directory_path)
+    delete_speach_count_coughs(chunk_files)
+    coughs_counted = len(cough_chunks)
+    return cough_chunks
+    # print(f"\033[94mProbabilities of the cough in \033[91m{coughs_counted}\033[94m chunks:\033[0m")
+    # print(f"\033[94m{cough_chunks}\033[0m")
 
 
 if __name__ == '__main__':

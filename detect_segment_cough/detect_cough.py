@@ -8,6 +8,7 @@ sys.path.append(os.path.abspath('/home/kolaj/my_project/AI/Kaszlometr final/dete
 sys.path.append(os.path.abspath('./detect_segment_cough/src/cough_detection'))
 #from src.feature_class import features
 from detect_segment_cough.src.DSP import classify_cough
+#from src.DSP import classify_cough
 from scipy.io import wavfile
 import pickle
 import argparse
@@ -30,7 +31,7 @@ def main(input_file):
 
     fs, x = wavfile.read(input_file)
     prob = classify_cough(x, fs, model, scaler)
-    #print(f"{input_file} has probability of cough: {prob}")
+    print(f"{input_file} has probability of cough: {prob}")
     return prob
 
 if __name__ == '__main__':
